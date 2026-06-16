@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #122845;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer base {
+  /* หัวข้อให้ดูเป็นสถาบัน — ตัวใหญ่ น้ำหนักหนา ระยะแน่น */
+  h1 { @apply tracking-tight; }
+  h2 { @apply tracking-tight; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-700 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-6 py-3 text-sm font-bold text-brand-950 shadow-sm transition hover:bg-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 bg-white px-6 py-3 text-sm font-semibold text-brand-700 transition hover:border-brand-300 hover:bg-brand-50;
+  }
+  /* ปุ่มขนาดใหญ่สำหรับ hero / CTA หลัก */
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+  /* ป้ายกำกับเล็กเหนือหัวข้อ (eyebrow) */
+  .eyebrow {
+    @apply text-sm font-bold uppercase tracking-widest text-brand-500;
+  }
+  /* หัวข้อ section ขนาดใหญ่ */
+  .section-title {
+    @apply text-3xl font-extrabold tracking-tight text-brand-900 sm:text-4xl;
+  }
+}
