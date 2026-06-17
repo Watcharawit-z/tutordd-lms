@@ -372,9 +372,9 @@ export async function saveSettings(formData: FormData): Promise<ActionResult> {
 
   const now = new Date().toISOString();
   const rows: { key: string; value: string; updated_at: string }[] = [];
-  for (const [key, value] of formData.entries()) {
+  Array.from(formData.entries()).forEach(([key, value]) => {
     if (typeof value === "string") rows.push({ key, value, updated_at: now });
-  }
+  });
   if (rows.length === 0) return { ok: false, message: "ไม่มีข้อมูลให้บันทึก" };
 
   const { error } = await admin.from("site_settings").upsert(rows, { onConflict: "key" });
