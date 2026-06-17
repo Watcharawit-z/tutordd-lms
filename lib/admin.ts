@@ -119,7 +119,7 @@ export async function getDashboard() {
   }
   const { data: prodRows } = await admin.from("products").select("id, title");
   const titleMap = new Map((prodRows ?? []).map((p) => [p.id, p.title]));
-  const topProducts = [...byProduct.entries()]
+  const topProducts = Array.from(byProduct.entries())
     .map(([id, count]) => ({ label: titleMap.get(id) ?? "—", value: count }))
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
@@ -334,7 +334,7 @@ export async function getAnalytics() {
     if (!activityByUser.has(p.user_id)) activityByUser.set(p.user_id, []);
     activityByUser.get(p.user_id)!.push(new Date(p.updated_at).getTime());
   }
-  const buyersList = [...firstBuy.keys()];
+  const buyersList = Array.from(firstBuy.keys());
   const retention = [7, 14, 30].map((win) => {
     let came = 0;
     for (const u of buyersList) {
